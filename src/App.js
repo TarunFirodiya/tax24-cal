@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from './logo.png'; // Ensure the path is correct
 
 const indexData = {
   "2001-02": 100, "2002-03": 105, "2003-04": 109, "2004-05": 113, "2005-06": 117,
@@ -56,9 +57,40 @@ const CapitalGainTaxCalculator = () => {
   };
 
   return (
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <title>Serai Homes</title>
+  
+        <meta property="og:title" content="Home Sale Tax Calculator" />
+        <meta property="og:description" content="Budget 2024 impact on property sale tax" />
+        <meta property="og:image" content="%PUBLIC_URL%/thumbnail.png" />
+        <meta property="og:url" content="https://www.seraihomes.com" />
+        <meta property="og:type" content="website" />
+    
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Home Sale Tax Calculator" />
+        <meta name="twitter:description" content="Budget 2024 impact on property sale tax" />
+        <meta name="twitter:image" content="%PUBLIC_URL%/thumbnail.png" />
+        <meta name="twitter:url" content="https://www.seraihomes.com" />
+    
+        
+        <meta name="description" content="Budget 2024 impact on property sale tax" />
+    
+        
+      </head>
+      
+      <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+        
+
     <div className="min-h-screen bg-gradient-to-r from-blue-100 to-purple-100 flex flex-col items-center p-4 space-y-6 md:space-y-8" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '0.025em' }}>
       <div className="w-full max-w-4xl flex justify-between items-center">
-      <a href="www.seraihomes.com"><img src="/logo.png" alt="Serai Homes logo" className="h-8 md:h-12" /></a>
+      <a href="https://www.seraihomes.com"><img src={logo} alt="Serai Homes logo" className="h-8 md:h-12" /></a>
       </div>
       <div className="w-full max-w-2xl bg-white shadow-lg rounded-xl overflow-hidden">
         <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-6 relative">
@@ -167,6 +199,8 @@ const CapitalGainTaxCalculator = () => {
         </div>
       </div>
     </div>
+    </body>
+    </html>
   );
 };
 
