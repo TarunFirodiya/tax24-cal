@@ -58,7 +58,7 @@ const CapitalGainTaxCalculator = () => {
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-100 to-purple-100 flex flex-col items-center p-4 space-y-6 md:space-y-8" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '0.025em' }}>
       <div className="w-full max-w-4xl flex justify-between items-center">
-      <a href="www.seraihomes.com"><img src="/logo.png" alt="Serai Homes logo" className="h-8 md:h-12" />
+      <a href="www.seraihomes.com"><img src="/logo.png" alt="Serai Homes logo" className="h-8 md:h-12" /></a>
       </div>
       <div className="w-full max-w-2xl bg-white shadow-lg rounded-xl overflow-hidden">
         <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-6 relative">
