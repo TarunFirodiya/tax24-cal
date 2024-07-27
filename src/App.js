@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactGA from 'react-ga4';
 import logo from './LOGO.png'; 
 
 const indexData = {
@@ -14,6 +15,11 @@ const CapitalGainTaxCalculator = () => {
   const [costOfAcquisition, setCostOfAcquisition] = useState('');
   const [purchaseYear, setPurchaseYear] = useState('');
   const [results, setResults] = useState(null);
+
+  useEffect(() => {
+    ReactGA.initialize('G-724K91PHM4');
+    ReactGA.send('pageview');
+  }, []);
 
   const calculateTax = () => {
     const sale = parseFloat(saleValue) * 100;
@@ -35,7 +41,12 @@ const CapitalGainTaxCalculator = () => {
     const taxSavings = oldTax - newTax;
 
     setResults({
+      saleValue: sale / 100,
+      costOfAcquisition: cost / 100,
+      indexedCost: indexedCost / 100,
+      oldRegimeGain: oldRegimeGain / 100,
       oldTax: oldTax / 100,
+      newRegimeGain: newRegimeGain / 100,
       newTax: newTax / 100,
       taxSavings: taxSavings / 100,
       isBeneficial: newTax < oldTax
@@ -132,24 +143,42 @@ const CapitalGainTaxCalculator = () => {
                   {results.isBeneficial ? "New regime is more beneficial" : "Old regime is more beneficial"}
                 </p>
               </div>
-              <table className="w-full text-sm">
-                <thead>
-                  <tr>
-                    <th className="text-left">Regime</th>
-                    <th className="text-right">Tax Amount (in Lacs)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Old Regime Tax</td>
-                    <td className="text-right">₹{results.oldTax.toFixed(1)}</td>
-                  </tr>
-                  <tr>
-                    <td>New Regime Tax</td>
-                    <td className="text-right">₹{results.newTax.toFixed(1)}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <table className="w-full text-sm mb-4">
+      <thead>
+        <tr>
+          <th className="text-left">Description</th>
+          <th className="text-right">Old Regime (in Lacs)</th>
+          <th className="text-right">New Regime (in Lacs)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sale Value</td>
+          <td className="text-right">₹{results.saleValue.toFixed(1)}</td>
+          <td className="text-right">₹{results.saleValue.toFixed(1)}</td>
+        </tr>
+        <tr>
+          <td>Cost of Purchase</td>
+          <td className="text-right">₹{results.costOfAcquisition.toFixed(1)}</td>
+          <td className="text-right">₹{results.costOfAcquisition.toFixed(1)}</td>
+        </tr>
+        <tr>
+          <td>Indexed Cost of Purchase</td>
+          <td className="text-right">₹{results.indexedCost.toFixed(1)}</td>
+          <td className="text-right">N/A</td>
+        </tr>
+        <tr>
+          <td>Capital Gain</td>
+          <td className="text-right">₹{results.oldRegimeGain.toFixed(1)}</td>
+          <td className="text-right">₹{results.newRegimeGain.toFixed(1)}</td>
+        </tr>
+        <tr>
+          <td>Capital Gain Tax</td>
+          <td className="text-right">₹{results.oldTax.toFixed(1)}</td>
+          <td className="text-right">₹{results.newTax.toFixed(1)}</td>
+        </tr>
+      </tbody>
+    </table>
             </div>
           )}
         </div>
